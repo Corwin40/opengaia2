@@ -1,0 +1,62 @@
+<div class="modal fade" id="op_add_member" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un nouveau Membre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="op_form_add_members">
+                    <div class="row">
+                        <div class="col-12">
+                            <p><b>Le membre :</b></p>
+                            <hr>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating mb-1">
+                                <input class="form-control" type="text" id="firstName" name="firstName" placeholder="firstName">
+                                <label for="firstName">Nom</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating mb-1">
+                                <input class="form-control" type="text" id="lastName" name="lastName" placeholder="lastName">
+                                <label for="lastName">Prénom</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-1">
+                                <input class="form-control" type="email" id="email" name="email" placeholder="email">
+                                <label for="lastName"><i class="fas fa-at"></i>  Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p><b>Le compte</b></p>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-1">
+                                <input class="form-control" type="text" id="username" name="username" placeholder="username">
+                                <label for="username"><i class="fas fa-user"></i>  Login</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-1">
+                                <input class="form-control" type="password" id="Password" name="Password" placeholder="Password">
+                                <label for="Password"><i class="fas fa-key"></i>  Mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="alert alert-info">Lors de la validation de ce formulaire, un email de vérification sera envoyé à l'adresse mail du nouveau membre.
+                                <br>Ce dernier devra confirmer l'adresse pour valider la création de son compte.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary btn-sm">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>

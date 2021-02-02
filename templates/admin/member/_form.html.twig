@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-12">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_username'}}) }}
+            <label for="registration_form_username"><i class="fas fa-user"></i>  Login</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_firstname'}}) }}
+            <label for="registration_form_firstname"><i class="fas fa-user"></i>  Prénom</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_lastname'}}) }}
+            <label for="registration_form_lastname"><i class="fas fa-user"></i>  Nom</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_email'}}) }}
+            <label for="registration_form_email"><i class="fas fa-user"></i>  Email</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.Password.first, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_first'}}) }}
+            <label for="registration_form_password_first"><i class="fas fa-user"></i>  Votre mot de passe</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-floating mb-2">
+            {{ form_widget(form.Password.second, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_second'}}) }}
+            <label for="registration_form_password_second"><i class="fas fa-user"></i>  confirmez mot de passe</label>
+        </div>
+    </div>
+</div>
+<button class="btn btn-sm btn-default">{{ button_label|default('Créer la fiche') }}</button>
+{{ form_end(form) }}

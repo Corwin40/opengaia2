@@ -1,0 +1,12 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Edit Parameter{% endblock %}
+
+{% block content %}
+    <h3>Paramètres du site</h3>
+
+    {{ include('admin/parameter/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+
+    {{ include('admin/parameter/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Members{% endblock %}
+
+{% block content %}
+    <h3>Fiche de membre</h3>
+
+    {{ include('admin/member/_form.html.twig') }}
+
+    <a href="{{ path('op_admin_member_index') }}">Retour</a>
+{% endblock %}
+
+{% block modal %}
+{% endblock %}

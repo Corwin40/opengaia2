@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Préparation à l'installation{% endblock %}
+
+{% block header %}
+    {{ include('include/header_admin.html.twig') }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section id="section_header">
+        <h3>Première Etape : Paramètres.</h3>
+        <hr>
+    </section>
+    <section id="section_">
+        <Form id="AddParameters">
+            <div class="row mb-3">
+                <label for="nameSite" class="col-sm-2 col-form-label col-form-label-sm">Nom du site</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control form-control-sm" id="nameSite">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-3 offset-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                            Le site doit être en ligne
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </Form>
+    </section>
+</div>
+{% endblock %}

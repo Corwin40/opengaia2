@@ -1,0 +1,65 @@
+{% extends 'login.html.twig' %}
+
+{% block title %}OpenGAIA | Login {% endblock %}
+
+{% block content %}
+
+    <div class="col-12 col-md-5 col-lg-6 col-xl-4 align-self-center px-lg-6 my-5">
+
+        <!-- Heading -->
+        <h2 class="display-4 text-center mb-3">
+            Se connecter
+        </h2>
+
+        <!-- Subheading -->
+        <p class="text-muted text-center mb-5">
+            Accéder à votre espace personnel.
+        </p>
+
+        <!-- Form -->
+        <form method="post" autocomplete="false">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com" value="{{ last_username }}">
+                        <label for="floatingInput"><i class="fas fa-user-circle"></i>  Login</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
+                        <label for="floatingPassword"><i class="fas fa-key"></i>  Password</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-block btn-primary mb-3">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- Submit -->
+
+
+            <!-- Link -->
+            <p class="text-center">
+                <small class="text-muted text-center">
+                    Vous n'êtes pas membre ? <a href="{{ path('op_admin_security_register') }}">Créer votre compte</a>.
+                </small>
+            </p>
+
+        </form>
+
+    </div>
+    <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="bg-cover h-100 min-vh-100 mt-n1 mr-n3" style="background-image: url(http://127.0.0.1:8000/assets/styles/images/covers/auth-side-cover.jpeg);"></div>
+
+    </div>
+
+
+{% endblock %}

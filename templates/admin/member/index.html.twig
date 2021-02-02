@@ -1,0 +1,78 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}OpenGaia | Administration{% endblock %}
+
+{% block content_title %}
+    <section id="op_admin_content_title">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-around">
+                            <div class="col-6"><p class="content_title">Gestion des utilisateurs</p></div>
+                            <div class="col-6"><a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#op_add_member"><i class="fas fa-user-plus fa-xs"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Liste des inscrits au {{ "now"|date("d M Y") }}</h4>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nom & Prénom</th>
+                                <th>Login</th>
+                                <th>Email</th>
+                                <th>CreateAt</th>
+                                <th>UpdateAt</th>
+                                <th>compte vérifié</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for member in members %}
+                                <tr>
+                                    <td>{{ member.firstName }} {{ member.lastName }}</td>
+                                    <td>{{ member.username }}</td>
+                                    <td>{{ member.email }}</td>
+                                    <td>{{ member.createAt ? member.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>{{ member.updateAt ? member.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>{{ member.isVerified ? 'Yes' : 'No' }}</td>
+                                    <td>
+                                        <a href="#" id="{{ member.id }}" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#op_update_member"><i class="fas fa-user-edit fa-xs"></i></a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="11">Aucun enregistrement correspondant à la recherche trouvé</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block modal %}
+    {{ include('admin/member/include/_addMember.html.twig') }}
+    {{ include('admin/member/include/_updateMember.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

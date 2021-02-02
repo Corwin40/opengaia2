@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+<title> | Index</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/home/xavier/www/opengaia/src/Controller/Webapp/PublicController.php'|file_link(0) }}">src/Controller/Webapp/PublicController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/home/xavier/www/opengaia/templates/webapp/public/index.html.twig'|file_link(0) }}">templates/webapp/public/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}

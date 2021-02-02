@@ -1,0 +1,14 @@
+$op-primary: darken(#428bca, 20%);
+//*** ------------- Import Variables of bootstrap ---------------- ***//
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+//*** ------------- Import Variables of my theme ---------------- ***//
+@import "scss/body";
+@import "scss/header";
+//*** ------------- Import Variables of icons ---------------- ***//
+@import '~@fortawesome/fontawesome-free/css/all.css';
+//*** ------------- Import mixins ---------------- ***//
+@import "scss/mixins/fontface";
+@include fontface('CerebriSans-light', '../../fonts/CerebriSans-Light', 300, normal);
+

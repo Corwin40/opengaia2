@@ -1,0 +1,42 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Parameter index{% endblock %}
+
+{% block content %}
+    <h1>Parameter index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NameSite</th>
+                <th>TitleSite</th>
+                <th>Keywords</th>
+                <th>Description</th>
+                <th>IsOnline</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parameter in parameters %}
+            <tr>
+                <td>{{ parameter.id }}</td>
+                <td>{{ parameter.nameSite }}</td>
+                <td>{{ parameter.titleSite }}</td>
+                <td>{{ parameter.description }}</td>
+                <td>{{ parameter.isOnline ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('op_admin_parameter_show', {'id': parameter.id}) }}">show</a>
+                    <a href="{{ path('op_admin_parameter_edit', {'id': parameter.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('op_admin_parameter_new') }}">Create new</a>
+{% endblock %}

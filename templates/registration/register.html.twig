@@ -1,0 +1,71 @@
+{% extends 'login.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+    <div class="col-12 col-md-5 col-lg-6 col-xl-4 align-self-center px-lg-6 my-5">
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        <h2 class="display-6 text-center mb-3">Créer mon compte</h2>
+        <!-- Form -->
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_username'}}) }}
+                    <label for="registration_form_username"><i class="fas fa-user"></i>  Login</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_firstname'}}) }}
+                    <label for="registration_form_firstname"><i class="fas fa-user"></i>  Prénom</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_lastname'}}) }}
+                    <label for="registration_form_lastname"><i class="fas fa-user"></i>  Nom</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_email'}}) }}
+                    <label for="registration_form_email"><i class="fas fa-user"></i>  Email</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.Password.first, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_first'}}) }}
+                    <label for="registration_form_password_first"><i class="fas fa-user"></i>  Votre mot de passe</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-2">
+                    {{ form_widget(registrationForm.Password.second, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_second'}}) }}
+                    <label for="registration_form_password_second"><i class="fas fa-user"></i>  confirmez mot de passe</label>
+                </div>
+            </div>
+        </div>
+
+
+
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-sm btn-outline-primary">Créer le compte</button>
+            </div>
+
+        {{ form_end(registrationForm)}}
+    </div>
+    <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="bg-cover h-100 min-vh-100 mt-n1 mr-n3" style="background-image: url(http://127.0.0.1:8000/assets/styles/images/covers/auth-side-cover.jpeg);">
+
+        </div>
+
+    </div>
+{% endblock %}
