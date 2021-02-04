@@ -5,6 +5,7 @@ $op-primary: darken(#428bca, 20%);
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 //*** ------------- Import Variables of my theme ---------------- ***//
 @import "scss/body";
+@import "scss/content";
 @import "scss/header";
 //*** ------------- Import Variables of icons ---------------- ***//
 @import '~@fortawesome/fontawesome-free/css/all.css';

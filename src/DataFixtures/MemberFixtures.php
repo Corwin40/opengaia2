@@ -11,6 +11,8 @@ class MemberFixtures extends Fixture
 {
     private $encoder;
 
+    public const MEMBER_REFERENCE = 'admin-member';
+
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
@@ -31,5 +33,8 @@ class MemberFixtures extends Fixture
         $manager->persist($member);
 
         $manager->flush();
+    
+        // Ajout de l'objet admin aux fixtures
+        $this->addReference(self::MEMBER_REFERENCE, $member);
     }
 }

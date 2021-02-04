@@ -9,30 +9,95 @@
 {% block content %}
 <div class="container">
     <section id="section_header">
-        <h3>Première Etape : Paramètres.</h3>
-        <hr>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Configuration de la plateforme</h5>
+            </div>
+        </div>
     </section>
-    <section id="section_">
-        <Form id="AddParameters">
-            <div class="row mb-3">
-                <label for="nameSite" class="col-sm-2 col-form-label col-form-label-sm">Nom du site</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control form-control-sm" id="nameSite">
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-sm-3 offset-sm-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
-                            Le site doit être en ligne
-                        </label>
+    <section id="section_content">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Etape 1 : les paramètres</h4>
+                <hr>
+                <Form id="AddParameters">
+                    <div class="row mb-2">
+                        <label for="nameSite" class="col-sm-2 col-form-label col-form-label-sm">Nom du site</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" id="nameSite">
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="row mb-2">
+                        <label for="titleSite" class="col-sm-2 col-form-label col-form-label-sm">Titre du site</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" id="titleSite">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="description" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control form-control-sm" id="description" rows="5"></textarea>
+                        </div>
+                    </div>
 
-        </Form>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3 offset-sm-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck1">
+                                    Le site doit être en ligne
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </Form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Etape 2 : le compte d'administration</h4>
+                <hr>
+                <Form id="AddAdmin">
+                    <div class="row mb-2 g-2">
+                        <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm">Nom et prénom</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control form-control-sm" id="firstName" placeholder="Prénom">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control form-control-sm" id="lastName" placeholder="Nom">
+                        </div>
+                    </div>
+                    <div class="row mb-2 g-2">
+                        <label for="username" class="col-sm-2 col-form-label col-form-label-sm">Identifiant</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" id="username" placeholder="Identifiant">
+                        </div>
+                    </div>
+                     <div class="row mb-2 g-2">
+                        <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" id="email" placeholder="email">
+                        </div>
+                    </div>
+                    <div class="row mb-2 g-2">
+                        <label for="password" class="col-sm-2 col-form-label col-form-label-sm">Mot de passe</label>
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control form-control-sm" id="password" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-2 g-2">
+                        <label for="repassword" class="col-sm-2 col-form-label col-form-label-sm">Confirmez le mot de passe</label>
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control form-control-sm" id="re-password" placeholder="">
+                        </div>
+                    </div>
+
+                </Form>
+            </div>
+        </div>
     </section>
 </div>
 {% endblock %}

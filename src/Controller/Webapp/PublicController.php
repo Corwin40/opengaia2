@@ -25,7 +25,7 @@ class PublicController extends AbstractController
 
         // boucle : verifie si le site est installé
         if(!$parameter){
-            return $this->redirectToRoute('op_admin_dashboard_first_intall');
+            return $this->redirectToRoute('op_admin_first_install');
         }
         else {
             return $this->redirectToRoute('op_webapp_page_index');

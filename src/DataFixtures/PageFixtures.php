@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Webapp\Page;
 
@@ -15,7 +16,7 @@ class PageFixtures extends Fixture
             ->setTitle('Accueil')
             ->setSlug('acccueil')
             ->setState('publish')
-            ->setAuthor(1)
+            ->setAuthor($this->getReference(MemberFixtures::MEMBER_REFERENCE))
             ->setPosition(1)
             ->setCreateAt()
             ->setUpdateAt()
@@ -23,5 +24,11 @@ class PageFixtures extends Fixture
         $manager->persist($page);
 
         $manager->flush();
+    }
+    public function getDependencies()
+    {
+        return array(
+            MemberFixtures::class,
+        );
     }
 }
