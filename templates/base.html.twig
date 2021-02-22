@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     {% endblock %}
-    {% block title %}
-        <title>OpenGaia</title>
-    {% endblock %}
+    <title>{% block title %}OpenGaia{% endblock %}</title>
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -17,14 +15,14 @@
     <body>
     <div class="wrapper">
         {% block header %}
-            {{ include('include/navbar_webapp.html.twig') }}
+            {{ render(controller('App\\Controller\\Webapp\\PublicController::BlocMenu')) }}
         {% endblock %}
         <main class="container" id="content">
             {% block content %}
             {% endblock %}
         </main>
         {% block footer %}
-            {{ include('include/footer_admin.html.twig') }}
+            {{ include('include/footer_webapp.html.twig') }}
         {% endblock %}
     </div>
     {% block javascripts %}

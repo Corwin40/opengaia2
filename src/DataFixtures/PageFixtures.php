@@ -16,6 +16,7 @@ class PageFixtures extends Fixture
             ->setTitle('Accueil')
             ->setSlug('acccueil')
             ->setState('publish')
+            ->setIsMenu(0)
             ->setAuthor($this->getReference(MemberFixtures::MEMBER_REFERENCE))
             ->setPosition(1)
             ->setCreateAt()

@@ -19,6 +19,35 @@ class PageRepository extends ServiceEntityRepository
         parent::__construct($registry, Page::class);
     }
 
+    /**
+     * Retourne la première occurence de page
+     */
+    public function firstPage()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isMenu = :isMenu')
+            ->setParameter('isMenu', 1)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * Liste les pages qui s'afficheront dans le bloc menu.
+     */
+    public function listMenu()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isMenu = :isMenu')
+            ->setParameter('isMenu', 1)
+            ->orderBy('p.position', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Page[] Returns an array of Page objects
     //  */

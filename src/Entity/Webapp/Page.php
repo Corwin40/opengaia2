@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PageRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Page
 {
@@ -226,9 +227,12 @@ class Page
         return $this->createAt;
     }
 
-    public function setCreateAt(\DateTimeInterface $createAt): self
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreateAt(): self
     {
-        $this->createAt = $createAt;
+        $this->createAt = new \DateTime();
 
         return $this;
     }
@@ -238,9 +242,13 @@ class Page
         return $this->updateAt;
     }
 
-    public function setUpdateAt(\DateTimeInterface $updateAt): self
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function setUpdateAt(): self
     {
-        $this->updateAt = $updateAt;
+        $this->updateAt = new \DateTime();
 
         return $this;
     }

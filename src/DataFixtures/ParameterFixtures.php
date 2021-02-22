@@ -12,8 +12,8 @@ class ParameterFixtures extends Fixture
     {
         $parameter = new Parameter();
         $parameter
-            ->setNameSite()
-            ->setTitleSite()
+            ->setNameSite('OpenGaia')
+            ->setTitleSite('OpenGaia')
             ->setIsOnline(0)
             ->setDescription('Application de gestion')
             ;

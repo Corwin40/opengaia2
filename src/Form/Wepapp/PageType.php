@@ -21,8 +21,6 @@ class PageType extends AbstractType
             ->add('tags')
             ->add('publishAt')
             ->add('publishEnd')
-            ->add('createAt')
-            ->add('updateAt')
             ->add('author')
         ;
     }
