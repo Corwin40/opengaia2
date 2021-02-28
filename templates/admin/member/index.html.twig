@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="row justify-content-around">
                             <div class="col-6"><h3 class="card-title">Gestion des utilisateurs</h3></div>
-                            <div class="col-6"><a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#op_add_member"><i class="fas fa-user-plus fa-xs"></i></a></div>
+                            <div class="col-6"><a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#op_add_member" data-bs-whatever="test"><i class="fas fa-user-plus fa-xs"></i></a></div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,9 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% set data = "" %}
                             {% for member in members %}
+                                {% set data = {'id': member.id, 'firstName': member.firstName, 'lastName':member.lastName, 'email': member.email } %}
                                 <tr>
                                     <td>{{ member.firstName }} {{ member.lastName }}</td>
                                     <td>{{ member.username }}</td>
@@ -49,7 +51,10 @@
                                     <td>{{ member.updateAt ? member.updateAt|date('Y-m-d H:i:s') : '' }}</td>
                                     <td>{{ member.isVerified ? 'Yes' : 'No' }}</td>
                                     <td>
-                                        <a href="#" id="{{ member.id }}" data-bs-toggle="modal" data-bs-target="#op_update_member"><i class="fas fa-user-edit fa-xs"></i></a>
+                                        <a href="#" id="btn_update_member" data-bs-toggle="modal" data-bs-target="#op_update_member" data-bs-whatever="{{ data|json_encode }}">
+                                            <i class="fas fa-user-edit fa-xs"></i>
+                                        </a>
+                                        {{ include('admin/member/include/_updateMember.html.twig') }}
                                     </td>
                                 </tr>
                             {% else %}
@@ -70,10 +75,52 @@
 
 {% block modal %}
     {{ include('admin/member/include/_addMember.html.twig') }}
-    {{ include('admin/member/include/_updateMember.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            // Alimentation de la modal "update" par JSON
+            var op_update_member = document.getElementById('op_update_member');
+            op_update_member.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                var button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                var member = JSON.parse(button.getAttribute('data-bs-whatever'))
+                // If necessary, you could initiate an AJAX request here
+                // and then do the updating in a callback.
+                //
+                // Update the modal's content.
+
+                var modalTitle = op_update_member.querySelector('.modal-title')
+                var firstNameInput = op_update_member.querySelector('.modal-body #firstName')
+                var lastNameInput = op_update_member.querySelector('.modal-body #lastName')
+                var emailInput = op_update_member.querySelector('.modal-body #email')
+
+                modalTitle.textContent = 'Mise à jour de la fiche : ' + member.firstName + ' ' + member.lastName
+                firstNameInput.value = member.firstName
+                lastNameInput.value = member.lastName
+                emailInput.value = member.email
+
+                document.getElementById('op_form_update_members').onsubmit = function(e) {
+                    e.preventDefault();
+                    var url = this.action;
+                    var firstName = firstNameInput.value;
+                    var lastName = lastNameInput.value;
+                    var email = emailInput.value;
+                    axios.post(url, {firstName: firstName, lastName:lastName, email: email})
+                        .then(function(response){
+                            console.log(response.data)
+                        })
+
+                };
+            });
+
+
+        });
+    </script>
+
 
 {% endblock %}

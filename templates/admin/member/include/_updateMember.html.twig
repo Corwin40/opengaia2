@@ -2,11 +2,11 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Mise à jour d'un nouveau Membre</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Mise à jour d'un Membre</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="op_form_add_members">
+                <form id="op_form_update_members" action="{{ path('op_admin_memberjson_update', {'id': member.id})}}">
                     <div class="row">
                         <div class="col-12">
                             <p><b>Le membre :</b></p>
@@ -30,29 +30,14 @@
                                 <label for="lastName"><i class="fas fa-at"></i>  Email</label>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <p><b>Le compte</b></p>
-                            <hr>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-1">
-                                <input class="form-control" type="text" id="username" name="username" placeholder="username">
-                                <label for="username"><i class="fas fa-user"></i>  Login</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-1">
-                                <input class="form-control" type="password" id="Password" name="Password" placeholder="Password">
-                                <label for="Password"><i class="fas fa-key"></i>  Mot de passe</label>
-                            </div>
-                        </div>
                     </div>
-                </form>
+
             </div>
             <div class="modal-footer">
+                <button id="btn-update" type="submit" class="btn btn-primary btn-sm">Ajouter</button>
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary btn-sm">Ajouter</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
