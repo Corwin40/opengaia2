@@ -9,6 +9,8 @@ use App\Entity\Webapp\Page;
 
 class PageFixtures extends Fixture
 {
+    public const PAGE_REFERENCE = 'admin-page';
+
     public function load(ObjectManager $manager)
     {
         $page = new Page();
@@ -16,20 +18,24 @@ class PageFixtures extends Fixture
             ->setTitle('Accueil')
             ->setSlug('acccueil')
             ->setState('publish')
-            ->setIsMenu(0)
+            ->setIsMenu(1)
             ->setAuthor($this->getReference(MemberFixtures::MEMBER_REFERENCE))
             ->setPosition(1)
-            ->setCreateAt()
-            ->setUpdateAt()
+            ->setIsPublish(1)
+            ->addSection($this->getReference(SectionFixtures::SECTION_REFERENCE))
         ;
         $manager->persist($page);
-
         $manager->flush();
+
+        // Ajout de l'objet admin aux fixtures
+        $this->addReference(self::PAGE_REFERENCE, $page);
     }
+
     public function getDependencies()
     {
         return array(
             MemberFixtures::class,
+            PageFixtures::class
         );
     }
 }

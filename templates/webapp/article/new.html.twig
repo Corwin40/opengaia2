@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block content %}
+    <h1>Create new Article</h1>
+
+    {{ include('webapp/article/_form.html.twig') }}
+
+    <a href="{{ path('op_webapp_article_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#article_content'),{
+                toolbar: {
+                    items: [ 'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'underline',
+                        'fontColor',
+                        'fontSize',
+                        'fontFamily',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'alignment',
+                        'outdent',
+                        'indent',
+                        '|',
+                        'imageUpload',
+                        'CKFinder',
+                        'blockQuote',
+                        'insertTable',
+                        'mediaEmbed',
+                        'undo',
+                        'redo',
+                        'code'
+                    ]
+                },
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+{% endblock %}

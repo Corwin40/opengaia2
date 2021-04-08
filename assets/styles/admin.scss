@@ -4,6 +4,9 @@ $admin-color : linear-gradient(90deg, rgba(28,113,216,1) 0%, rgba(48,200,119,1) 
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "scss/bsforms";
+@import "scss/bsmodal";
+
 //*** ------------- Import Variables of my theme ---------------- ***//
 @import "scss/body";
 @import "scss/content";

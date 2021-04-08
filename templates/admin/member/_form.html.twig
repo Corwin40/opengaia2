@@ -1,6 +1,10 @@
 {{ form_start(form) }}
 <div class="row">
     <div class="col-12">
+        <h4>Le Membre</h4>
+        <hr>
+    </div>
+    <div class="col-12">
         <div class="form-floating mb-2">
             {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_username'}}) }}
             <label for="registration_form_username"><i class="fas fa-user"></i>  Login</label>
@@ -26,16 +30,16 @@
     </div>
     <div class="col-12">
         <div class="form-floating mb-2">
-            {{ form_widget(form.Password.first, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_first'}}) }}
-            <label for="registration_form_password_first"><i class="fas fa-user"></i>  Votre mot de passe</label>
+            {{ form_widget(form.typeMember, {'attr': {'class': 'form-control'}}) }}
+            <label for="registration_form_email"><i class="fas fa-user"></i>  type de Membre</label>
         </div>
     </div>
     <div class="col-12">
-        <div class="form-floating mb-2">
-            {{ form_widget(form.Password.second, {'attr': {'class': 'form-control', 'placeholder': 'registration_form_password_second'}}) }}
-            <label for="registration_form_password_second"><i class="fas fa-user"></i>  confirmez mot de passe</label>
-        </div>
+        <a class="btn btn-sm btn-primary" href="{{ path('op_admin_member_index') }}"><i class="far fa-arrow-alt-circle-left"></i></a>
+        <button class="btn btn-sm btn-primary">{{ button_label|default('Créer la fiche') }}{{ form_end(form) }}</button>
+        <a class="btn btn-sm btn-warning" href="#"><i class="fa fa-trash"></i> Supprimer</a>
+
+
     </div>
 </div>
-<button class="btn btn-sm btn-default">{{ button_label|default('Créer la fiche') }}</button>
-{{ form_end(form) }}
+

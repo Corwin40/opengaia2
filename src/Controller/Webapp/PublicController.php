@@ -22,8 +22,7 @@ class PublicController extends AbstractController
      */
     public function index(): RedirectResponse
     {
-        $parameter = $this->getDoctrine()->getRepository(Parameter::class)->find(1);
-
+        $parameter = $this->getDoctrine()->getRepository(Parameter::class)->findFirstReccurence();
         // boucle : verifie si le site est installé
         if(!$parameter){
             return $this->redirectToRoute('op_admin_dashboard_first_install');

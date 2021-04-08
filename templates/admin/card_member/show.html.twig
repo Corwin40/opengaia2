@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cardMember{% endblock %}
+
+{% block body %}
+    <h1>cardMember</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ card_member.id }}</td>
+            </tr>
+            <tr>
+                <th>NameSociety</th>
+                <td>{{ card_member.nameSociety }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ card_member.adress }}</td>
+            </tr>
+            <tr>
+                <th>Complement</th>
+                <td>{{ card_member.complement }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ card_member.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ card_member.city }}</td>
+            </tr>
+            <tr>
+                <th>PhoneDesk</th>
+                <td>{{ card_member.phoneDesk }}</td>
+            </tr>
+            <tr>
+                <th>PhoneGsm</th>
+                <td>{{ card_member.phoneGsm }}</td>
+            </tr>
+            <tr>
+                <th>EmailSociety</th>
+                <td>{{ card_member.emailSociety }}</td>
+            </tr>
+            <tr>
+                <th>Siret</th>
+                <td>{{ card_member.siret }}</td>
+            </tr>
+            <tr>
+                <th>Ape</th>
+                <td>{{ card_member.ape }}</td>
+            </tr>
+            <tr>
+                <th>IsRgpd</th>
+                <td>{{ card_member.isRgpd ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreateAt</th>
+                <td>{{ card_member.createAt ? card_member.createAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdateAt</th>
+                <td>{{ card_member.updateAt ? card_member.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_card_member_index') }}">back to list</a>
+
+    <a href="{{ path('admin_card_member_edit', {'id': card_member.id}) }}">edit</a>
+
+    {{ include('admin_card_member/_delete_form.html.twig') }}
+{% endblock %}

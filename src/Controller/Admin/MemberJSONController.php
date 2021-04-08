@@ -17,7 +17,7 @@ class MemberJSONController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      * @Route("/update/{id}", name="update", methods={"POST"})
      */
-    public function update(Request $request, $id, EntityManagerInterface $em)
+    public function update(Request $request, $id, Member $member)
     {
         $user = $this->getUser();
         if(!$user) return $this->json([
@@ -25,12 +25,18 @@ class MemberJSONController extends AbstractController
             'message' => "Non authorisé"
         ], 403);
 
-        // logique pour updater le membre
-        $memberUpdate = $this->getDoctrine()->getRepository(Member::class)->find($id);
-
         $data = $request->getContent();
+        $update = json_decode($data, true);
+        // logique pour updater le membre
+        $member
+            ->setFirstName($update['firstName'])
+            ->setLastName($update['lastName'])
+            ->setEmail($update['email'])
+            ;
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($member);
+        $entityManager->flush();
 
-
-        return $this->json($memberUpdate, 200);
+        return $this->json("ok", 200);
     }
 }

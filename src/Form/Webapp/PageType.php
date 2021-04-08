@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Wepapp;
+namespace App\Form\Webapp;
 
 use App\Entity\Webapp\Page;
 use Symfony\Component\Form\AbstractType;

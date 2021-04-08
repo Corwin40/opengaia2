@@ -33,6 +33,8 @@
         </div>
         {% block javascripts %}
             {{ encore_entry_script_tags('admin') }}
+            <script src="{{ asset('bundles/ckeditor5/build/ckeditor.js') }}"></script>
+            <script src="{{ asset('bundles/ckfinder/ckfinder.js') }}"></script>
         {% endblock %}
     </body>
 </html>

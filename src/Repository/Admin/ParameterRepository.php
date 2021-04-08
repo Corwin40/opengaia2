@@ -19,6 +19,14 @@ class ParameterRepository extends ServiceEntityRepository
         parent::__construct($registry, Parameter::class);
     }
 
+    Public function findFirstReccurence(){
+        return $this->createQueryBuilder('p')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return Parameter[] Returns an array of Parameter objects
     //  */

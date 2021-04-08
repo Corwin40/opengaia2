@@ -3,7 +3,7 @@
 namespace App\Controller\Webapp;
 
 use App\Entity\Webapp\Page;
-use App\Form\Wepapp\PageType;
+use App\Form\Webapp\PageType;
 use App\Repository\Webapp\PageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,11 +26,13 @@ class PageController extends AbstractController
     }
 
     /**
+     * Ajout une page avec une section et un article
      * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $page = new Page();
+
         $form = $this->createForm(PageType::class, $page);
         $form->handleRequest($request);
 

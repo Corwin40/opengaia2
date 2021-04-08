@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Webapp\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Admin\Member;
@@ -29,12 +30,21 @@ class MemberFixtures extends Fixture
             ->setFirstName('Dév')
             ->setLastName('OpenPixel')
             ->setRoles(['ROLE_SUPER_ADMIN'])
+            ->setTypeMember('admin')
+            ->setCardMember($this->getReference(CardMemberFixtures::CARDMEMBER_REFERENCE))
         ;
         $manager->persist($member);
 
         $manager->flush();
-    
+
         // Ajout de l'objet admin aux fixtures
         $this->addReference(self::MEMBER_REFERENCE, $member);
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            CardMemberFixtures::class,
+        );
     }
 }

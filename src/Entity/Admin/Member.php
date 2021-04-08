@@ -2,6 +2,7 @@
 
 namespace App\Entity\Admin;
 
+use App\Entity\Ecomm\Product;
 use App\Entity\Webapp\Page;
 use App\Repository\Admin\MemberRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,7 +26,7 @@ class Member implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     private $username;
 
@@ -75,10 +76,21 @@ class Member implements UserInterface
      */
     private $updateAt;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $typeMember;
+
+    /**
+     * @ORM\OneToOne(targetEntity=cardMember::class, cascade={"persist", "remove"})
+     */
+    private $cardMember;
+
 
     public function __construct()
     {
         $this->pages = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -232,6 +244,35 @@ class Member implements UserInterface
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->username;
+    }
+
+    public function getTypeMember(): ?string
+    {
+        return $this->typeMember;
+    }
+
+    public function setTypeMember(string $typeMember): self
+    {
+        $this->typeMember = $typeMember;
+
+        return $this;
+    }
+
+    public function getCardMember(): ?cardMember
+    {
+        return $this->cardMember;
+    }
+
+    public function setCardMember(?cardMember $cardMember): self
+    {
+        $this->cardMember = $cardMember;
+
+        return $this;
+    }
+
     public function getCreateAt(): ?\DateTimeInterface
     {
         return $this->createAt;
@@ -261,10 +302,5 @@ class Member implements UserInterface
         $this->updateAt = new \DateTime();
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->username;
     }
 }

@@ -14,7 +14,7 @@ class ParameterFixtures extends Fixture
         $parameter
             ->setNameSite('OpenGaia')
             ->setTitleSite('OpenGaia')
-            ->setIsOnline(0)
+            ->setIsOnline(1)
             ->setDescription('Application de gestion')
             ;
         $manager->persist($parameter);

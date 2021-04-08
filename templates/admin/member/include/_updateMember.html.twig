@@ -2,36 +2,85 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Mise à jour d'un Membre</h5>
+                <h4 class="modal-title" id="exampleModalLabel">Mise à jour d'un Membre</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form id="op_form_update_members" action="{{ path('op_admin_memberjson_update', {'id': member.id})}}">
             <div class="modal-body">
-                <form id="op_form_update_members" action="{{ path('op_admin_memberjson_update', {'id': member.id})}}">
-                    <div class="row">
-                        <div class="col-12">
-                            <p><b>Le membre :</b></p>
-                            <hr>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-floating mb-1">
-                                <input class="form-control" type="text" id="firstName" name="firstName" placeholder="firstName">
-                                <label for="firstName">Nom</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-floating mb-1">
-                                <input class="form-control" type="text" id="lastName" name="lastName" placeholder="lastName">
-                                <label for="lastName">Prénom</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-1">
-                                <input class="form-control" type="email" id="email" name="email" placeholder="email">
-                                <label for="lastName"><i class="fas fa-at"></i>  Email</label>
-                            </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5>Le membre :</h5>
+                        <hr>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="firstName" name="firstName" placeholder="firstName">
+                            <label for="firstName">Nom</label>
                         </div>
                     </div>
-
+                    <div class="col-6">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="lastName" name="lastName" placeholder="lastName">
+                            <label for="lastName">Prénom</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="email" id="email" name="email" placeholder="email">
+                            <label for="lastName"><i class="fas fa-at"></i>  Email</label>
+                        </div>
+                    </div>
+                    {% if member.typeMember == 'admin' %}
+                    <div class="col-12">
+                        <h5 class="modal-body-title">Compléments d'informations</h5>
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="adress" name="adress" placeholder="Adresse ...">
+                            <label for="adress">Adresse</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="complement" name="complement" placeholder="Complément ...">
+                            <label for="adress">Complément</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="zipcode" name="zipcode" placeholder="CP ...">
+                            <label for="adress">Code postal</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="city" name="city" placeholder="Ville ...">
+                            <label for="adress">City</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="phoneDesk" name="phoneDesk" placeholder="Téléphone fixe ...">
+                            <label for="adress">Téléphone fixe</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input class="form-control" type="text" id="phoneGsm" name="phoneGsm" placeholder="Téléphone mobile ...">
+                            <label for="adress">Téléphone mobile</label>
+                        </div>
+                    </div>
+                    {% elseif member.typeMember == 'customers'%}
+                    <div class="col-12">
+                        <p>clients</p>
+                    </div>
+                    {% else %}
+                    <div class="col-12">
+                        <p>Producteurs</p>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
             <div class="modal-footer">
                 <button id="btn-update" type="submit" class="btn btn-primary btn-sm">Ajouter</button>

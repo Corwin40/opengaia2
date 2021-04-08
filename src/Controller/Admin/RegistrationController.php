@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Admin\Members;
+use App\Entity\Admin\Member;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -33,7 +33,7 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new Members();
+        $user = new Member();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

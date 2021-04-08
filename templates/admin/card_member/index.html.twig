@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cardMember index{% endblock %}
+
+{% block body %}
+    <h1>cardMember index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NameSociety</th>
+                <th>Adress</th>
+                <th>Complement</th>
+                <th>Zipcode</th>
+                <th>City</th>
+                <th>PhoneDesk</th>
+                <th>PhoneGsm</th>
+                <th>EmailSociety</th>
+                <th>Siret</th>
+                <th>Ape</th>
+                <th>IsRgpd</th>
+                <th>CreateAt</th>
+                <th>UpdateAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for card_member in card_members %}
+            <tr>
+                <td>{{ card_member.id }}</td>
+                <td>{{ card_member.nameSociety }}</td>
+                <td>{{ card_member.adress }}</td>
+                <td>{{ card_member.complement }}</td>
+                <td>{{ card_member.zipcode }}</td>
+                <td>{{ card_member.city }}</td>
+                <td>{{ card_member.phoneDesk }}</td>
+                <td>{{ card_member.phoneGsm }}</td>
+                <td>{{ card_member.emailSociety }}</td>
+                <td>{{ card_member.siret }}</td>
+                <td>{{ card_member.ape }}</td>
+                <td>{{ card_member.isRgpd ? 'Yes' : 'No' }}</td>
+                <td>{{ card_member.createAt ? card_member.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ card_member.updateAt ? card_member.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_card_member_show', {'id': card_member.id}) }}">show</a>
+                    <a href="{{ path('admin_card_member_edit', {'id': card_member.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_card_member_new') }}">Create new</a>
+{% endblock %}
