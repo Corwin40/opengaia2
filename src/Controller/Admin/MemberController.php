@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Admin\cardMember;
 use App\Entity\Admin\Member;
 use App\Form\Admin\MemberType;
 use App\Repository\Admin\MemberRepository;
@@ -21,7 +22,7 @@ class MemberController extends AbstractController
     public function index(MemberRepository $membersRepository): Response
     {
         return $this->render('admin/member/index.html.twig', [
-            'members' => $membersRepository->findAll(),
+            'members' => $membersRepository->listCardmember(),
         ]);
     }
 
@@ -35,8 +36,14 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $cardMember = new cardMember();
+            // J'hydrate l'entité Member avec la relation CardMember
+            $member->setCardMember($cardMember);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
+            $entityManager->persist($cardMember);
             $entityManager->flush();
 
             return $this->redirectToRoute('op_admin_member_index');

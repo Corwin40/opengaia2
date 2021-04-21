@@ -26,6 +26,7 @@ class MemberJSONController extends AbstractController
         ], 403);
 
         $data = $request->getContent();
+
         $update = json_decode($data, true);
         // logique pour updater le membre
         $member
@@ -37,6 +38,6 @@ class MemberJSONController extends AbstractController
         $entityManager->persist($member);
         $entityManager->flush();
 
-        return $this->json("ok", 200);
+        return $this->json($member, 200);
     }
 }

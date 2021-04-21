@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div>
+    <label for="{{ form.title.vars.id }}" class="{{ form.title.vars.required ? 'required' }} col-sm-2 col-form-label">{{ form.title.vars.name }}</label>
+    <div class="col-sm-10">
+        <input id="{{ form.title.vars.id }}" type="text" name="{{ form.title.vars.full_name }}" required="{{ form.title.vars.required ? 'required' }}">
+    </div>
+</div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

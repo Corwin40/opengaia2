@@ -36,6 +36,19 @@ class MemberRepository extends ServiceEntityRepository implements PasswordUpgrad
         $this->_em->flush();
     }
 
+    public function listCardmember()
+    {
+        return $this->createQueryBuilder('m')
+            ->addSelect('m.id, m.username, m.firstName, m.lastName, m.email, m.typeMember, m.isVerified, c.adress, c.id AS idcard, c.nameSociety, c.adress, c.complement, c.zipcode, c.city, c.phoneDesk, c.phoneGsm, c.emailSociety, c.siret, c.ape, c.isRgpd')
+            ->leftJoin('m.cardMember', 'c')
+            ->leftjoin('c.Product', 'p')
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Members[] Returns an array of Members objects
     //  */

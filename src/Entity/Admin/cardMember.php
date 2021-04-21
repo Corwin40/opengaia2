@@ -32,7 +32,7 @@ class cardMember
     private $adress;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $complement;
 
@@ -76,7 +76,7 @@ class cardMember
      */
     private $Product;
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isRgpd;
 

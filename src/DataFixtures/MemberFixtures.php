@@ -34,7 +34,6 @@ class MemberFixtures extends Fixture
             ->setCardMember($this->getReference(CardMemberFixtures::CARDMEMBER_REFERENCE))
         ;
         $manager->persist($member);
-
         $manager->flush();
 
         // Ajout de l'objet admin aux fixtures

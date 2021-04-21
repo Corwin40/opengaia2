@@ -33,8 +33,7 @@
                                 <th>Nom & Prénom</th>
                                 <th>Login</th>
                                 <th>Email</th>
-                                <th>CreateAt</th>
-                                <th>UpdateAt</th>
+                                <th>Adress</th>
                                 <th>compte vérifié</th>
                                 <th></th>
                             </tr>
@@ -47,8 +46,7 @@
                                     <td>{{ member.firstName }} {{ member.lastName }}</td>
                                     <td>{{ member.username }}</td>
                                     <td>{{ member.email }}</td>
-                                    <td>{{ member.createAt ? member.createAt|date('Y-m-d H:i:s') : '' }}</td>
-                                    <td>{{ member.updateAt ? member.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>{{ member.adress }}</td>
                                     <td>{{ member.isVerified ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="dropdown">
